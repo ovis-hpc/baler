@@ -1044,8 +1044,8 @@ DEFAULT_NAMED_QUERY_FILE_PATH = "/etc/bq.list"
 NAMED_QUERY_TABLE = dict()
 def load_named_query_table(path):
     line_no = 0
-    cmt = re.compile("^\W*#")
-    fmt = re.compile("^\W*(\w+)\W*=(.*)") # name = options
+    cmt = re.compile(r"^\W*#")
+    fmt = re.compile(r"^\W*(\w+)\W*=(.*)") # name = options
     f = open(path, "rt")
     line = f.readline()
     while line:
@@ -1238,11 +1238,11 @@ if __name__ == "__main__":
     parser.add_argument("-Q", "--named-query-file", type=str, required=False,
                         default=DEFAULT_NAMED_QUERY_FILE_PATH,
                         metavar='PATH',
-                        help="The path to the named query file. "
-                        "The format of the file is simply `name = options` "
-                        "for each line. If the line is too long `\` can be "
-                        "used at the end of the line to concatenate the next "
-                        "line. The leading `#` marks the line as a comment."
+                        help=r"The path to the named query file. "
+                        r"The format of the file is simply `name = options` "
+                        r"for each line. If the line is too long `\` can be "
+                        r"used at the end of the line to concatenate the next "
+                        r"line. The leading `#` marks the line as a comment."
                         )
     parser.add_argument("-m", "--msg", action="store_true",
                         help="Query messages")
